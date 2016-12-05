@@ -209,7 +209,7 @@ def logout():
 
 UnitTest로 로그인을 하지 않거나 또는 로그인 후 인증 / 비인증 함수 호출을 하고 그 결과가 맞는가를 확인하는 프로그램입니다.
 
-클라이언트를 돌리면
+### 클라이언트를 돌리면
 
 ```sh
 test0000_init (__main__.TU) ... ok
@@ -234,6 +234,28 @@ Ran 9 tests in 0.216s
 OK
 ```
 라는 결과가 나오고 모두 정상동작하는 것을 확인할 수 있습니다.
+
+### requests 세션 이용
+
+로그인을 하고 인증될 함수를 호출할 때 암호화된 cookies 객체를 이용합니다.
+따라서 
+
+```python
+r = request.post(..., cookies=cookies)
+cookies = r.cookies
+r = request.post(..., cookies=cookies)
+cookies = r.cookies
+``` 
+
+하는 대신 
+
+```python
+s = requests.Session()
+s.post(...)
+s.post(...)
+``` 
+와 같은 식으로 호출하면 브라우저 처럼 세션을 자동으로 관리합니다.
+
 
 # TODO
 
