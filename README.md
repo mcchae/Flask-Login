@@ -196,7 +196,7 @@ def logout():
 ```
 
 
-```python
+```python
     logout_user()
 ```
 
